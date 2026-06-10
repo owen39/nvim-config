@@ -6,8 +6,13 @@ end
 return {
 	{ 
 		"folke/tokyonight.nvim", 
-		enabled = true, 
+		enabled = false, 
 		config = function()
+			require('tokyonight').setup({
+				on_colors = function(c)
+					c.bg = '#000000'
+				end,
+			})
 			vim.cmd.colorscheme "tokyonight"
 			set_defaults()
 		end
@@ -36,13 +41,24 @@ return {
 		end
 	},
 	{
-		"rebelot/kanagawa.nvim", 
+		"rebelot/kanagawa.nvim",
 		enabled = false,
-		version = "*", 
-		config = function() 
-			require("kanagawa").load("dragon") 
+		version = "*",
+		config = function()
+			require("kanagawa").setup({
+				colors = {
+					theme = {
+						dragon = {
+							ui = {
+								bg = "#000000",
+							},
+						},
+					},
+				},
+			})
+			vim.cmd.colorscheme("kanagawa-dragon")
 			set_defaults()
-		end,  
+		end,
 	},
 	{
 		"catppuccin/nvim", 
@@ -56,9 +72,13 @@ return {
 	},
 	{
 		"Mofiqul/vscode.nvim", 
-		enabled = false, 
+		enabled = true, 
 		config = function()
-			require('vscode').setup({})
+			require('vscode').setup({
+				color_overrides = {
+					vscBack = "#000000"
+				}
+			})
 			vim.cmd.colorscheme "vscode"
 			set_defaults()
 		end,
