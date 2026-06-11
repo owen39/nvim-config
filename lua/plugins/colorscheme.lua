@@ -1,6 +1,7 @@
 local function set_defaults() 
 	vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#ff9e64' })
 	vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#7aa2f7' })	
+	vim.api.nvim_set_hl(0, 'LineNr', { fg = '#ffffff' })	
 end
 
 return {
@@ -10,12 +11,19 @@ return {
 		config = function()
 			require('tokyonight').setup({
 				on_colors = function(c)
-					c.bg = '#000000'
+				--	c.bg = '#191B29'
 				end,
 			})
-			vim.cmd.colorscheme "tokyonight"
+			vim.cmd.colorscheme "tokyonight-storm"
 			set_defaults()
 		end
+	},
+	{
+		"blazkowolf/gruber-darker.nvim",
+		enabled = false,
+		config = function() 
+			require('gruber-darker').setup()
+		end,
 	},
 	{ 
 		'projekt0n/github-nvim-theme', 
@@ -50,13 +58,13 @@ return {
 					theme = {
 						dragon = {
 							ui = {
-								bg = "#000000",
+								-- bg = "#000000",
 							},
 						},
 					},
 				},
 			})
-			vim.cmd.colorscheme("kanagawa-dragon")
+			vim.cmd.colorscheme("kanagawa")
 			set_defaults()
 		end,
 	},
@@ -76,7 +84,7 @@ return {
 		config = function()
 			require('vscode').setup({
 				color_overrides = {
-					vscBack = "#000000"
+				--	vscBack = "#000000"
 				}
 			})
 			vim.cmd.colorscheme "vscode"
